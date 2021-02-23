@@ -1,6 +1,8 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,17 +19,17 @@ namespace Business.Concrete
 
        
 
-        public void Add(Car car)
+        public IResult Add(Car car)
         {
             if (car.Description.Length >= 2 && car.DailyPrice > 0)
             {
                 _ıcarDal.Add(car);
-                Console.WriteLine("Araç eklendi");
+                return new ErrorResult("Açılama en az 2 karakter ve günlük ücret 0dan büyük olmalı");
             }
-            else
-            {
-                Console.WriteLine("Ekleme başarısız");
-            }
+            
+                return new SuccessResult();
+            
+
         }
 
         public void Delete(Car car)
@@ -44,6 +46,11 @@ namespace Business.Concrete
         public Car GetById(int id)
         {
             return _ıcarDal.Get(c=>c.CarId == id);
+        }
+
+        public List<CarDetailDTO> GetCarDetails()
+        {
+            return _ıcarDal.GetCarDetails();
         }
 
         public List<Car> GetCarsByBrandId(int id)

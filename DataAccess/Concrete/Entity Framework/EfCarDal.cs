@@ -2,6 +2,7 @@
 using Core.EntityFramework;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -13,5 +14,19 @@ namespace DataAccess.Concrete.Entity_Framework
 {
     public class EfCarDal : EfEntityRepositoryBase<Car, CarDbContext>, ICarDal
     {
+        public List<CarDetailDTO> GetCarDetails()
+        {
+            using (CarDbContext context = new CarDbContext())
+            {
+                var result = from c in context.Cars
+                             join b in context.Brands
+                             on c.BrandId equals b.BrandId 
+                             join r in context.Colors 
+                             on c.ColorId equals r.ColorId
+                             select new CarDetailDTO 
+                             {BrandId=b.BrandId, BrandName=b.BrandName, DailyPrice=c.DailyPrice, ColorName=r.ColorName};
+                return result.ToList();
+            }
+        }
     }
 }
