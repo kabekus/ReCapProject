@@ -36,7 +36,7 @@ namespace Business.Concrete
         public IResult Delete(Car car)
         {
             _ıcarDal.Delete(car);
-            return new SuccessResult(Messages.AddingComplete);
+            return new SuccessResult(Messages.DeletingComplete);
         }
 
         public IDataResult<List<Car>> GetAll()
@@ -71,7 +71,7 @@ namespace Business.Concrete
         public IResult Update(Car car)
         {
             _ıcarDal.Update(car);
-            return new SuccessResult(Messages.AddingComplete);
+            return new SuccessResult(Messages.UpdatingComplete);
         }
 
         
