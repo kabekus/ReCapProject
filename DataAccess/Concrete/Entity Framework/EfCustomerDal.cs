@@ -9,7 +9,7 @@ using Core.EntityFramework;
 
 namespace DataAccess.Concrete.Entity_Framework
 {
-    public class EfCustomerDal : EfEntityRepositoryBase<Customers, CarDbContext>, ICustomerDal
+    public class EfCustomerDal : EfEntityRepositoryBase<Customer, CarDbContext>, ICustomerDal
     {
        
     }

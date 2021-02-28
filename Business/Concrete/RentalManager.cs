@@ -17,7 +17,7 @@ namespace Business.Concrete
         {
             _ırentalDal = rentalDal;
         }
-        public IResult Add(Rentals rental)
+        public IResult Add(Rental rental)
         {
             if (rental.ReturnDate==null && rental.ReturnDate > DateTime.Now)
             {
@@ -27,20 +27,20 @@ namespace Business.Concrete
             return new SuccessResult(Messages.Rented);
         }
 
-        public IResult Delete(Rentals rental)
+        public IResult Delete(Rental rental)
         {
             _ırentalDal.Delete(rental);
             return new SuccessResult(Messages.DeletingComplete);
         }
 
-        public IDataResult<List<Rentals>> GetAll()
+        public IDataResult<List<Rental>> GetAll()
         {
-            return new SuccessDataResult<List<Rentals>>(_ırentalDal.GetAll());
+            return new SuccessDataResult<List<Rental>>(_ırentalDal.GetAll());
         }
 
-        public IDataResult<Rentals> GetByRentalId(int id)
+        public IDataResult<Rental> GetByRentalId(int id)
         {
-            return new SuccessDataResult<Rentals>(_ırentalDal.Get(r=>r.RentalId==id));
+            return new SuccessDataResult<Rental>(_ırentalDal.Get(r=>r.RentalId==id));
         }
 
         public IDataResult<List<RentalDetailDTO>> GetRentalDetails()
@@ -48,7 +48,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<RentalDetailDTO>>(_ırentalDal.GetRentalDetails());
         }
 
-        public IResult Update(Rentals rental)
+        public IResult Update(Rental rental)
         {
             _ırentalDal.Equals(rental);
             return new SuccessResult(Messages.UpdatingComplete);

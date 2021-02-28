@@ -43,7 +43,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(Customers customer)
+        public IActionResult Add(Customer customer)
         {
             var result = _customerService.Add(customer);
             if (result.Success)
@@ -54,7 +54,7 @@ namespace WebAPI.Controllers
         }
         
         [HttpPost("delete")]
-        public IActionResult Delete(Customers customer)
+        public IActionResult Delete(Customer customer)
         {
             var result = _customerService.Delete(customer);
             if (result.Success)
@@ -65,7 +65,7 @@ namespace WebAPI.Controllers
         }
         
         [HttpPost("update")]
-        public IActionResult Update(Customers customer)
+        public IActionResult Update(Customer customer)
         {
             var result = _customerService.Update(customer);
             if (result.Success)

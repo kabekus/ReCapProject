@@ -17,29 +17,29 @@ namespace Business.Concrete
         {
             _ıuserDal = userDal;
         }
-        public IResult Add(Users user)
+        public IResult Add(User user)
         {
             _ıuserDal.Add(user);
             return new SuccessResult(Messages.AddingComplete);
         }
 
-        public IResult Delete(Users user)
+        public IResult Delete(User user)
         {
             return new SuccessResult(Messages.DeletingComplete);
         }
     
 
-        public IDataResult<List<Users>> GetAll()
+        public IDataResult<List<User>> GetAll()
         {
-            return new SuccessDataResult<List<Users>>(_ıuserDal.GetAll());
+            return new SuccessDataResult<List<User>>(_ıuserDal.GetAll());
         }
 
-        public IDataResult<Users> GetByUserId(int id)
+        public IDataResult<User> GetByUserId(int id)
         {
-            return new SuccessDataResult<Users>(_ıuserDal.Get(u=>u.UserId==id));
+            return new SuccessDataResult<User>(_ıuserDal.Get(u=>u.UserId==id));
         }
 
-        public IResult Update(Users user)
+        public IResult Update(User user)
         {
             _ıuserDal.Equals(user);
             return new SuccessResult(Messages.UpdatingComplete);
