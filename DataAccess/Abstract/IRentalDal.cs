@@ -8,7 +8,7 @@ using System.Text;
 namespace DataAccess.Abstract
 {
     public interface IRentalDal : IEntityRepository<Rentals>
-    {
+    { 
         List<RentalDetailDTO> GetRentalDetails();
     }
 }

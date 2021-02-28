@@ -57,15 +57,9 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<CarDetailDTO>>(_ıcarDal.GetCarDetails());
         }
-
-        public IDataResult<List<Car>> GetCarsByBrandId(int id)
+        public IDataResult<List<Car>> GetCarsByCarId(int id)
         {
-            return new SuccessDataResult<List<Car>>(_ıcarDal.GetAll(b => b.BrandId == id));
-        }
-
-        public IDataResult<List<Car>> GetCarsByColorId(int id)
-        {
-            return new SuccessDataResult<List<Car>>(_ıcarDal.GetAll(c => c.ColorId == id));
+            return new SuccessDataResult<List<Car>>(_ıcarDal.GetAll(a => a.CarId == id));
         }
 
         public IResult Update(Car car)
@@ -73,7 +67,5 @@ namespace Business.Concrete
             _ıcarDal.Update(car);
             return new SuccessResult(Messages.UpdatingComplete);
         }
-
-        
     }
 }

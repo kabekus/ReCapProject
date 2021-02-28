@@ -3,13 +3,11 @@ using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 using System.Text;
 
 namespace DataAccess.Concrete.Entity_Framework
 {
-    public class EfColorDal : EfEntityRepositoryBase<Color, CarDbContext> , IColorsDal
+    public class EfUserDal : EfEntityRepositoryBase<Users, CarDbContext>, IUserDal
     {
-       
     }
 }
