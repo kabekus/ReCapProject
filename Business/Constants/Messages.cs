@@ -15,6 +15,7 @@ namespace Business.Constants
         public static string UpdatingComplete = "Güncelleme tamamlandı";
         public static string DeliveryError  = "Araç henüz teslim edilmedi";
         public static string Rented = "Kiralama tamamlandı";
+        public static string FeeError = "Günlük ücret giriniz";
     }
 }
 
