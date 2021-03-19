@@ -14,40 +14,27 @@ namespace Business.Concrete
 {
     public class UserManager : IUserService
     {
-        IUserDal _ıuserDal;
+
+        IUserDal _userDal;
 
         public UserManager(IUserDal userDal)
         {
-            _ıuserDal = userDal;
+            _userDal = userDal;
         }
 
-        [ValidationAspect(typeof(UserValidator))]
-        public IResult Add(User user)
+        public List<OperationClaim> GetClaims(User user)
         {
-            _ıuserDal.Add(user);
-            return new SuccessResult(Messages.AddingComplete);
+            return _userDal.GetClaims(user);
         }
 
-        public IResult Delete(User user)
+        public void Add(User user)
         {
-            return new SuccessResult(Messages.DeletingComplete);
-        }
-    
-
-        public IDataResult<List<User>> GetAll()
-        {
-            return new SuccessDataResult<List<User>>(_ıuserDal.GetAll());
+            _userDal.Add(user);
         }
 
-        public IDataResult<User> GetByUserId(int id)
+        public User GetByMail(string email)
         {
-            return new SuccessDataResult<User>(_ıuserDal.Get(u=>u.UserId==id));
-        }
-
-        public IResult Update(User user)
-        {
-            _ıuserDal.Equals(user);
-            return new SuccessResult(Messages.UpdatingComplete);
+            return _userDal.Get(u => u.Email == email);
         }
     }
 }
