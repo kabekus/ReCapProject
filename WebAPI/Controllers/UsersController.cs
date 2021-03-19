@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Entities.Concrete;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -34,7 +35,7 @@ namespace WebAPI.Controllers
         [HttpGet("getbyid")]
         public IActionResult GetByUserId(int id)
         {
-            var result = _userService.GetByUserId(id);
+            var result = _userService.GetById(id);
             if (result.Success)
             {
                 return Ok(result);
@@ -52,7 +53,6 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
-
         [HttpPost("delete")]
         public IActionResult Delete(User users)
         {
